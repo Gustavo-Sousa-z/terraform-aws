@@ -13,6 +13,5 @@ terraform {
 }
 
 provider "aws" {
-  # Configuration options
   profile = "terraform"
 }
