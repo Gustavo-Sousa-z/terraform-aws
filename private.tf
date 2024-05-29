@@ -5,11 +5,18 @@ resource "aws_subnet" "eks_subnet_private_1a" {
   availability_zone = "${data.aws_region.current.name}a"
 
   tags = merge(
+    local.filter_resourse,
     local.tags_private,
     {
       Name = "private-subnet-eks-1a"
     }
   )
+}
+
+#Atachando RT_private_eks as subnets publicas
+resource "aws_route_table_association" "attach_RT_priv_eks_1a" {
+  route_table_id = aws_route_table.RT_private_eks.id
+  subnet_id      = aws_subnet.eks_subnet_private_1a.id
 }
 
 resource "aws_subnet" "eks_subnet_private_1b" {
@@ -19,9 +26,16 @@ resource "aws_subnet" "eks_subnet_private_1b" {
 
   #A função merge esta contatenando todas as tags criadas no locals com minhas tags próprias
   tags = merge(
+    local.filter_resourse,
     local.tags_private,
     {
       Name = "private-subnet-eks-1b"
     }
   )
+}
+
+#Atachando RT_private_eks as subnets publicas
+resource "aws_route_table_association" "attach_RT_priv_eks_1b" {
+  route_table_id = aws_route_table.RT_private_eks.id
+  subnet_id      = aws_subnet.eks_subnet_private_1b.id
 }
