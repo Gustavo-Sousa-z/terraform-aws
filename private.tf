@@ -13,9 +13,9 @@ resource "aws_subnet" "eks_subnet_private_1a" {
   )
 }
 
-#Atachando RT_private_eks as subnets publicas
+#Atachando RT_private_eks_1a as subnets publicas
 resource "aws_route_table_association" "attach_RT_priv_eks_1a" {
-  route_table_id = aws_route_table.RT_private_eks.id
+  route_table_id = aws_route_table.RT_private_eks_1a.id
   subnet_id      = aws_subnet.eks_subnet_private_1a.id
 }
 
@@ -34,8 +34,8 @@ resource "aws_subnet" "eks_subnet_private_1b" {
   )
 }
 
-#Atachando RT_private_eks as subnets publicas
+#Atachando RT_private_eks_1b as subnets publicas
 resource "aws_route_table_association" "attach_RT_priv_eks_1b" {
-  route_table_id = aws_route_table.RT_private_eks.id
+  route_table_id = aws_route_table.RT_private_eks_1b.id
   subnet_id      = aws_subnet.eks_subnet_private_1b.id
 }
