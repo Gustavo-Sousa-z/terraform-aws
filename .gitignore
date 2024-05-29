@@ -2,8 +2,6 @@ README.md
 # Local .terraform directories
 **/.terraform/*
 .terraform.lock.hcl
-backend.tf
-main.tf
 backend-provider.tf
 
 # .tfstate files
