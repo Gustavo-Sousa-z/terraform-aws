@@ -3,9 +3,9 @@ resource "aws_internet_gateway" "ig_eks" {
   vpc_id = aws_vpc.eks_vpc.id
 
   tags = merge(
-    local.filter_resourse,
+    var.tags,
     {
-      Name = "ig_vpc_eks"
+      Name = "${var.igw_name}"
     }
   )
 }
@@ -20,9 +20,9 @@ resource "aws_route_table" "RT_public_eks" {
   }
 
   tags = merge(
-    local.filter_resourse,
+    var.tags,
     {
-      Name = "RT_public_eks"
+      Name = "${var.rt_public_name}"
     }
   )
 }
@@ -37,9 +37,9 @@ resource "aws_route_table" "RT_private_eks_1a" {
   }
 
   tags = merge(
-    local.filter_resourse,
+    var.tags,
     {
-      Name = "RT-private-eks-1a"
+      Name = "${var.rt_priv_name_1a}"
     }
   )
 }
@@ -54,9 +54,9 @@ resource "aws_route_table" "RT_private_eks_1b" {
   }
 
   tags = merge(
-    local.filter_resourse,
+    var.tags,
     {
-      Name = "RT-private-eks-1b"
+      Name = "${var.rt_priv_name_1b}"
     }
   )
 }

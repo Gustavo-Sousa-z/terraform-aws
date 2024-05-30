@@ -5,7 +5,7 @@ resource "aws_vpc" "eks_vpc" {
   enable_dns_hostnames = true
 
   tags = merge(
-    local.filter_resourse,
+    var.tags,
     {
       Name = "eks_vpc"
     }
