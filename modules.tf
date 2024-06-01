@@ -18,4 +18,11 @@ module "eks_nodes" {
   private_subnet_1a = module.eks_network.subnet_priv_1a
   private_subnet_1b = module.eks_network.subnet_priv_1b
   cluster_name      = module.cluster_eks.cluster_name_to_mng
-} 
+}
+
+module "eks_load_balancer_controller" {
+  source       = "./modules/aws-load-balancer-controller"
+  tags         = local.tags
+  oidc         = module.cluster_eks.oidc_to_controller
+  cluster_name = module.cluster_eks.cluster_name_to_mng
+}
