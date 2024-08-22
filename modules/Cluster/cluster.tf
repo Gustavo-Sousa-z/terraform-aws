@@ -4,6 +4,7 @@
 resource "aws_eks_cluster" "eks_cluster" {
   name     = var.eks_cluster_name
   role_arn = aws_iam_role.eks_cluster_role.arn
+  testando 2
 
   vpc_config {
     endpoint_private_access = true
